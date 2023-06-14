@@ -16,6 +16,7 @@ services:
     depends_on:
       - php-fpm
       - db
+      - node
     networks:
       app-network:
         ipv4_address: 10.17.0.2
@@ -47,6 +48,22 @@ services:
     networks:
       app-network:
         ipv4_address: 10.17.0.4
+
+  node:
+    build:
+      context: .
+      dockerfile: ./conf/nodejs/Dockerfile
+    tty: true
+    restart: always
+    container_name: ${APP_NAME}_node
+    ports:
+      - "5173:5173"
+    working_dir: /var/www/html/tgbot
+    volumes:
+      - ./app:/var/www/html/tgbot
+    networks:
+      app-network:
+        ipv4_address: 10.17.0.5
 
 networks:
   app-network:
