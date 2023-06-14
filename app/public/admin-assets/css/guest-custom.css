@@ -1,0 +1,53 @@
+.bg-active-success.active
+{
+	background-color: #E0F54A!important;
+}
+
+.btn.btn-primary
+{
+	background-color: #E0F54A;
+	color: #000000;
+}
+
+.btn-check:active+.btn.btn-primary, .btn-check:checked+.btn.btn-primary, .btn.btn-primary.active, .btn.btn-primary.show, .btn.btn-primary:active:not(.btn-active), .btn.btn-primary:focus:not(.btn-active), .btn.btn-primary:hover:not(.btn-active), .show>.btn.btn-primary {
+
+	background-color: #D4E846!important;
+	color: #000000!important;
+}
+
+.app-blank
+{
+	background-color: #000000;
+}
+
+.text-dark
+{
+	color: #ffffff!important;
+}
+
+a, .link-primary
+{
+	color: #ffffff!important;
+}
+
+a:hover, a:focus, .link-primary:hover, .link-primary:focus
+{
+	color: #c3c3c3!important;
+}
+
+.form-control, .form-control:focus
+{
+	background-color: #e6e6e6!important;
+	border-color:#000000;
+	color: #000000;
+}
+
+.form-control::placeholder
+{
+	color: #000000!important;
+}
+
+i.bi, i[class*=" fa-"], i[class*=" fonticon-"], i[class*=" la-"], i[class^=fa-], i[class^=fonticon-], i[class^=la-]
+{
+	color: #000000;
+}

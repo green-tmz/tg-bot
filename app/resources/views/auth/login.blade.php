@@ -1,47 +1,40 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.guest', [
+    'title' => 'Авторизация'
+])
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('content')
+<div class="d-flex flex-center flex-column flex-lg-row-fluid">
+    <div class="w-lg-500px p-10">
+        <form method="POST" class="form w-100" novalidate="novalidate" id="sign-in-form" action="{{ route('login') }}">
+            @csrf
+            <div class="text-center mb-11">
+                <h1 class="text-dark fw-bolder mb-3">Авторизация</h1>
+            </div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+            <div class="fv-row mb-8">
+                <input type="text" placeholder="E-mail" name="email" autocomplete="off" class="form-control bg-transparent" />
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+                <div class="fv-plugins-message-container invalid-feedback">
+                    <div data-field="email" data-form="sign-in-form"></div>
+                </div>
+            </div>
+            <div class="fv-row mb-3">
+                <input type="password" placeholder="Пароль" name="password" autocomplete="off" class="form-control bg-transparent" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                <div class="fv-plugins-message-container invalid-feedback">
+                    <div data-field="password" data-form="sign-in-form"></div>
+                </div>
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            <div class="d-grid mb-10" style="margin-top: 4rem!important;">
+                <button type="submit" id="sign-in-submit" class="btn btn-primary">
+                    <span class="indicator-label">Войти</span>
+                    <span class="indicator-progress">Загрузка...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
