@@ -126,9 +126,9 @@ return [
     |
     */
     'commands' => [
-        HelpCommand::class,
-        Telegram\Bot\Commands\HelpCommand::class,
-        App\Telegram\Commands\StartCommand::class,
+        // HelpCommand::class,
+        // Telegram\Bot\Commands\HelpCommand::class,
+        \App\Telegram\Commands\StartCommand::class,
         // Vendor\Project\Commands\SettingsCommand::class,
     ],
 
@@ -158,12 +158,11 @@ return [
            ],
         */
 
-        /* // Group Type: 2
+        // Group Type: 2
            'subscription' => [
                 'start', // Shared Command Name.
                 'stop', // Shared Command Name.
            ],
-        */
 
         /* // Group Type: 3
             'auth' => [

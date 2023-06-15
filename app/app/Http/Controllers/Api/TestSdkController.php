@@ -38,9 +38,11 @@ class TestSdkController extends Controller
 
         $messageId = $response->getMessageId();
 
-        // $updates = $this->telegram->getUpdates();
+        $updates = $this->telegram->getUpdates();
 
-        return $messageId;
+        // Telegram::addCommand(\App\Telegram\Commands\StartCommand::class);
+
+        return $updates;
     }
 
     /**

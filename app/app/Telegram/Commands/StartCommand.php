@@ -6,7 +6,7 @@ use Telegram\Bot\Commands\Command;
 
 class StartCommand extends Command
 {
-    protected string $name = 'start';
+    protected string $name = 'start123';
     protected string $description = 'Start Command to get you started';
 
     public function handle()
