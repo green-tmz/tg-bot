@@ -19,7 +19,7 @@ Route::get('/', function() {
 });
 
 Route::get('/setwebhook', function () {
-    $response = Telegram::setWebhook(['url' => env("TELEGRAM_WEBHOOK_URL")]);
+    $response = Telegram::setWebhook(['url' => 'https://green-soft.pro/api/{env("TELEGRAM_BOT_TOKEN")}/webhook']);
     dd($response);
 });
 
