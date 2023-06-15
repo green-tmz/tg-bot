@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function() {
     return redirect('/login');
+});
+
+Route::get('/setwebhook', function () {
+    $response = Telegram::setWebhook(['url' => 'https://green-soft.pro/api/'.env('TELEGRAM_BOT_TOKEN').'/webhook']);
+    dd($response);
 });
 
 require __DIR__.'/auth.php';

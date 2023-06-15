@@ -6,13 +6,13 @@ use Telegram\Bot\Commands\Command;
 
 class StartCommand extends Command
 {
-    protected string $name = 'start123';
-    protected string $description = 'Start Command to get you started';
+    // protected string $name = '/start123';
+    // protected string $description = 'Start Command to get you started';
 
-    public function handle()
-    {
-        $this->replyWithMessage([
-            'text' => 'Hey, there! Welcome to our bot!',
-        ]);
-    }
+    // public function handle()
+    // {
+    //     $this->replyWithMessage([
+    //         'text' => 'Hey, there! Welcome to our bot!',
+    //     ]);
+    // }
 }

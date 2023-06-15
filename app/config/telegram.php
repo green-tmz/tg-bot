@@ -32,11 +32,14 @@ return [
     */
     'bots' => [
         'mybot' => [
-            'token' => env('TELEGRAM_BOT_TOKEN', 'YOUR-BOT-TOKEN'),
-            'certificate_path' => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
-            'webhook_url' => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
-            'commands' => [
-                //Acme\Project\Commands\MyTelegramBot\BotCommand::class
+            'username'            => env('TELEGRAM_BOT_NAME', 'YOUR_BOT_NAME'),
+            'token'               => env('TELEGRAM_BOT_TOKEN', 'YOUR-BOT-TOKEN'),
+            'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
+            'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
+            'commands'            => [
+                //Acme\Project\Commands\MyTelegramBot\BotCommand::class,
+                App\Telegram\Commands\HelpCommand::class,
+                App\Telegram\Commands\TestCommand::class,
             ],
         ],
 
@@ -128,7 +131,7 @@ return [
     'commands' => [
         // HelpCommand::class,
         // Telegram\Bot\Commands\HelpCommand::class,
-        \App\Telegram\Commands\StartCommand::class,
+        // \App\Telegram\Commands\StartCommand::class,
         // Vendor\Project\Commands\SettingsCommand::class,
     ],
 

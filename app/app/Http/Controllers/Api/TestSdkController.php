@@ -6,20 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Telegram\Bot\Api;
+use Telegram\Bot\Keyboard\Keyboard;
 
 class TestSdkController extends Controller
 {
-    protected $telegram;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @param  Api  $telegram
-     */
-    public function __construct(Api $telegram)
-    {
-        $this->telegram = $telegram;
-    }
 
     /**
      * Display a listing of the resource.
@@ -31,18 +21,29 @@ class TestSdkController extends Controller
         // $firstName = $response->getFirstName();
         // $username = $response->getUsername();
 
-        $response = $this->telegram->sendMessage([
+        $keyboard = [
+            ['1', '2', '3']
+        ];
+
+        $reply_markup = Keyboard::make([
+            'keyboard' => $keyboard,
+            'resize_keyboard' => true,
+            'one_time_keyboard' => false
+        ]);
+
+        $response = Telegram::sendMessage([
             'chat_id' => '5799978499',
-            'text' => 'Hello World'
+            'text' => 'Hello World',
+            'reply_markup' => $reply_markup
         ]);
 
         $messageId = $response->getMessageId();
 
-        $updates = $this->telegram->getUpdates();
+        $updates = Telegram::getUpdates();
 
-        // Telegram::addCommand(\App\Telegram\Commands\StartCommand::class);
+        Telegram::addCommand(\App\Telegram\Commands\StartCommand::class);
 
-        return $updates;
+        dd($updates);
     }
 
     /**

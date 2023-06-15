@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\TestSdkController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::post('/'.env('TELEGRAM_BOT_TOKEN').'/webhook', function () {
+    return Telegram::commandsHandler(true);
 });
 
 Route::resource('tests', TestSdkController::class);
