@@ -3,7 +3,6 @@
 namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
-use Telegram\Bot\Laravel\Facades\Telegram;
 
 /**
  * Class HelpCommand.
@@ -31,11 +30,11 @@ class TestCommand extends Command
     public function handle()
 
     {
-        $response = Telegram::getUpdate();
+        $response = $this->getUpdate();
 
-        $text = 'Test test';
+        $text = 'Test test 123';
 
-        Telegram::replyWithMessage(compact('text'));
+        $this->replyWithMessage(compact('text'));
 
     }
 }
