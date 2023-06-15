@@ -31,16 +31,16 @@ class TestSdkController extends Controller
         // $firstName = $response->getFirstName();
         // $username = $response->getUsername();
 
-        // $response = $this->telegram->sendMessage([
-        //     'chat_id' => 'CHAT_ID',
-        //     'text' => 'Hello World'
-        // ]);
+        $response = $this->telegram->sendMessage([
+            'chat_id' => '5799978499',
+            'text' => 'Hello World'
+        ]);
 
-        // $messageId = $response->getMessageId();
+        $messageId = $response->getMessageId();
 
-        $updates = $this->telegram->getUpdates();
+        // $updates = $this->telegram->getUpdates();
 
-        return $updates;
+        return $messageId;
     }
 
     /**
