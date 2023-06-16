@@ -23,7 +23,7 @@ class WebhookController extends Controller
                 Log::info("Команда найдена: ".$commandClass);
             } else {
                 Log::info("Нет такой команды");
-                Log::info(print_r(Telegram::getCommands()));
+                Log::info(Telegram::getCommands());
                 Telegram::sendMessage([
                     'chat_id' => $updates->message->from->id,
                     'text' => 'Нет такой команды'
