@@ -11,6 +11,7 @@ class MainController extends Controller
     public static function commandsHandler()
     {
         $update = Telegram::getWebhookUpdates();
-        Log::info(json_decode($update, true));
+        $res = json_decode($update, true);
+        Log::info($res['message']['text']);
     }
 }
