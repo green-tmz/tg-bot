@@ -31,11 +31,13 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
 
     if (isset($updates->message->entities) && ($updates->message->entities[0]->type == 'bot_command')) {
         Log::info("Command: ". $updates->message->text);
+        $command = ucfirst(substr($updates->message->text, 1));
         $commands = [
             '/about' => AboutCommand::class
         ];
 
-        Log::info("Commands: ", $commands['/about']);
+        Log::info("Commands: ". $commands['/about']);
+        Log::info("Commands: ". $$command);
     } else {
         Log::info("Text: ". $updates->message->text);
     }
