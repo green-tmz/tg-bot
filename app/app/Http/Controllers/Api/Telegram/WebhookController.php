@@ -14,7 +14,6 @@ class WebhookController extends Controller
         // Telegram::addCommands($commands);
         $commandsHandler = Telegram::commandsHandler(true);
         $updates = Telegram::getWebhookUpdates();
-        $res1 = json_decode($updates, true);
 
         if (isset($updates->message->entities) && ($updates->message->entities[0]->type == 'bot_command')) {
             $commandName = ucfirst(substr($updates->message->text, 1));
@@ -24,6 +23,10 @@ class WebhookController extends Controller
                 Log::info("Команда найдена: ".$commandClass);
             } else {
                 Log::info("Нет такой команды");
+                $response = Telegram::sendMessage([
+                    'chat_id' => '5799978499',
+                    'text' => 'Hello World'
+                ]);
             }
         } else {
             Log::info("Text: ". $updates->message->text);
