@@ -40,7 +40,7 @@ return [
                 // Acme\Project\Commands\MyTelegramBot\BotCommand::class,
                 // App\Telegram\Commands\HelpCommand::class,
                 // App\Telegram\Commands\StartCommand::class,
-                App\Telegram\Commands\AboutCommand::class,
+                // App\Telegram\Commands\AboutCommand::class,
             ],
         ],
 
