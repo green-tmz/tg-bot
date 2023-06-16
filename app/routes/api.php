@@ -33,11 +33,11 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
     $res1 = json_decode($updates, true);
     Log::info("--- callback_query ---");
     Log::info($res1['message']['text']);
-    Log::info($updates->message->entities[0]);
-    Log::info($updates->message->entities[0]->type);
+    Log::info(isset($updates->message->entities));
+    // Log::info($updates->message->entities[0]->type);
     Log::info("-------");
 
-    if (isset($updates->message->entities[0]) && ($updates->message->entities[0]->type == 'bot_command')) {
+    if (isset($updates->message->entities) && ($updates->message->entities[0]->type == 'bot_command')) {
         Log::info("Command: ". $updates->message->text);
     } else {
         Log::info("Text: ". $updates->message->text);
