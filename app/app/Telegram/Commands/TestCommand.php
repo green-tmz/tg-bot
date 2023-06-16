@@ -3,6 +3,8 @@
 namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
+use Illuminate\Support\Facades\Log;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 /**
  * Class HelpCommand.
@@ -17,7 +19,7 @@ class TestCommand extends Command
     /**
      * @var array Command Aliases
      */
-    protected array $aliases = ['listcommands123'];
+    // protected array $aliases = ['listcommands123'];
 
     /**
      * @var string Command Description
@@ -27,14 +29,11 @@ class TestCommand extends Command
     /**
      * {@inheritdoc}
      */
-    public function handle()
-
+    public function handle($arguments)
     {
-        $response = $this->getUpdate();
-
-        $text = 'Test test 123';
-
-        $this->replyWithMessage(compact('text'));
-
+        $update = Telegram::getWebhookUpdates();
+        $result = json_decode($update, True);
+        Log::info("Ok");
+        Log::info($result);
     }
 }
