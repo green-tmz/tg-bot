@@ -19,7 +19,7 @@ class WebhookController extends Controller
 
             if (class_exists($commandClass)) {
                 Log::info("Команда найдена: ".$commandClass);
-                // Telegram::addCommand($commandClass);
+                Telegram::addCommands([$commandClass]);
                 $commandsHandler = Telegram::commandsHandler(true);
                 $res = Telegram::getCommandBus()->execute($commandName, '', $commandsHandler);
             } else {
