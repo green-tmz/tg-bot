@@ -28,22 +28,16 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
         AboutCommand::class
     ];
     Telegram::addCommands($commands);
-    Log::info("---------");
-    Log::info("--- commandsHandler ---");
     $commandsHandler = Telegram::commandsHandler(true);
-    Log::info("---------");
-    Log::info("--- text ---");
     $update = Telegram::getWebhookUpdates();
     $res1 = json_decode($update, true);
-    Log::info("---1---");
-    Log::info($res1);
-    Log::info("-------");
-    //$command = "yourCommand" for example, $arguments = array of something
-    $res = Telegram::getCommandBus()->execute($res1['message']['text'], [], $commandsHandler);
-    Log::info("---2---");
-    Log::info($res);
-    Log::info("-------");
-    // return Telegram::commandsHandler(true);
+    Log::info($res1->isType('callback_query'));
+    // //$command = "yourCommand" for example, $arguments = array of something
+    // $res = Telegram::getCommandBus()->execute($res1['message']['text'], [], $commandsHandler);
+    // Log::info("---2---");
+    // Log::info($res);
+    // Log::info("-------");
+    // // return Telegram::commandsHandler(true);
 });
 
 Route::resource('tests', TestSdkController::class);
