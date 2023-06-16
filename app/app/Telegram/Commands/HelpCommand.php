@@ -25,20 +25,9 @@ class HelpCommand extends Command
     public function handle()
 
     {
-        $response = $this->getUpdate();
-
-        $text = '**Список основных команд:** \n\n';
-        // $text .= '/start - основное меню \n\n';
-        // $text .= '/help - список основных команд \n\n';
-        // $text .= '/about - описание бота \n\n';
-
-        // $this->sendMessage([
-        //     'chat_id' => $response->message->from->id,
-        //     'text' => $text
-        // ]);
         $commands = $this->getTelegram()->getCommands();
 
-        $text = '';
+        $text = sprintf('**Список основных команд:**'.PHP_EOL);
         foreach ($commands as $name => $command) {
             $text .= sprintf('/%s - %s' . PHP_EOL, $name, $command->getDescription());
         }
