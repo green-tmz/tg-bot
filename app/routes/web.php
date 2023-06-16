@@ -18,9 +18,12 @@ Route::get('/', function() {
     return redirect('/login');
 });
 
-Route::get('/setwebhook', function () {
-    $response = Telegram::setWebhook(['url' => 'https://green-soft.pro/api/{env("TELEGRAM_BOT_TOKEN")}/webhook']);
-    dd($response);
+Route::prefix('telegram')->group(function() {
+    Route::get('/setwebhook', function () {
+        return Telegram::setWebhook([
+            'url' => 'https://green-soft.pro/api/telegram/{env("TELEGRAM_BOT_TOKEN")}/webhook'
+        ]);
+    });
 });
 
 require __DIR__.'/auth.php';

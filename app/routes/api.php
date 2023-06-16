@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\TestSdkController;
 use App\Http\Controllers\Api\Telegram\WebhookController;
 
 /*
@@ -20,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', [WebhookController::class, 'index']);
+Route::prefix('telegram')->group(function() {
+    Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', [WebhookController::class, 'index']);
+});
 
-Route::resource('tests', TestSdkController::class);
