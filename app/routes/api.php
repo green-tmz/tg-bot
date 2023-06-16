@@ -33,32 +33,34 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
     $res1 = json_decode($updates, true);
     Log::info("--- callback_query ---");
     Log::info($res1);
-    Log::info($updates->getMessage());
-    Log::info($updates->getCommand());
     Log::info("-------");
 
-    if ($updates->isType('callback_query')) {
-
-        $query = $updates->getCallbackQuery();
-        $data  = $query->getData();
-
-        Log::info("--- data ---");
-        Log::info($data);
-        Log::info("-------");
-
-       //$data - here is my command (for example - "cinema")
-
-        // $telegram->answerCallbackQuery([
-        //     'callback_query_id' => $query->getId()
-        // ]);
-
-        // try{
-        //     $telegram->triggerCommand($data,$commandsHandler);
-        // }  catch (Exception $e){
-        //     $this->log($e->getMessage());
-        // }
-
+    foreach ($updates as $update) {
+        Log::info($update->getMessage()->getText());
     }
+
+    // if ($updates->isType('callback_query')) {
+
+    //     $query = $updates->getCallbackQuery();
+    //     $data  = $query->getData();
+
+    //     Log::info("--- data ---");
+    //     Log::info($data);
+    //     Log::info("-------");
+
+    //    //$data - here is my command (for example - "cinema")
+
+    //     // $telegram->answerCallbackQuery([
+    //     //     'callback_query_id' => $query->getId()
+    //     // ]);
+
+    //     // try{
+    //     //     $telegram->triggerCommand($data,$commandsHandler);
+    //     // }  catch (Exception $e){
+    //     //     $this->log($e->getMessage());
+    //     // }
+
+    // }
 
 
     // //$command = "yourCommand" for example, $arguments = array of something
