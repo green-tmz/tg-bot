@@ -3,28 +3,23 @@
 namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
-use Illuminate\Support\Facades\Log;
 use Telegram\Bot\Laravel\Facades\Telegram;
+use App\Http\Controllers\Api\Telegram\MainController;
 
 /**
  * Class HelpCommand.
  */
-class HandlerCommand extends Command
+class AboutCommand extends Command
 {
     /**
      * @var string Command Name
      */
-    protected string $name = '';
+    protected string $name = 'about';
 
-    /**
-     * @var array Command Aliases
-     */
-    // protected array $aliases = ['listcommands123'];
-
-    /**
+   /**
      * @var string Command Description
      */
-    protected string $description = '';
+    protected string $description = 'About bot';
 
     /**
      * {@inheritdoc}
@@ -32,8 +27,6 @@ class HandlerCommand extends Command
     public function handle()
     {
         $update = Telegram::getWebhookUpdates();
-        $result = json_decode($update, True);
-        Log::info("Ok");
-        Log::info($result);
+        MainController::commandsHandler($update);
     }
 }
