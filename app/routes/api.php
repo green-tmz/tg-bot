@@ -21,14 +21,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function ($request) {
-    Log::info("ok123");
-    Log::info($request);
-    // $commands = [...];
-    // $telegram->addCommands($commands);
-    // $commandsHandler = $telegram->commandsHandler(true);
-    // //$command = "yourCommand" for example, $arguments = array of something
-    // $res = $telegram->getCommandBus()->execute($command, $arguments, $commandsHandler);
+Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
+    $commands = ['about'];
+    Telegram::addCommands($commands);
+    $commandsHandler = Telegram::commandsHandler(true);
+    $update = Telegram::getWebhookUpdates();
+    $res1 = json_decode($update, true);
+    Log::info("---1---");
+    Log::info($res1);
+    Log::info("-------");
+    //$command = "yourCommand" for example, $arguments = array of something
+    $res = Telegram::getCommandBus()->execute($res1['message']['text'], [], $commandsHandler);
+    Log::info("---2---");
+    Log::info($res);
+    Log::info("-------");
     // return Telegram::commandsHandler(true);
 });
 
