@@ -21,7 +21,7 @@ class WebhookController extends Controller
                 Log::info("Команда найдена: ".$commandClass);
                 Telegram::addCommands([$commandClass]);
                 $commandsHandler = Telegram::commandsHandler(true);
-                $res = Telegram::getCommandBus()->execute($commandName, $commandsHandler, '');
+                $res = Telegram::getCommandBus()->execute($commandName, $commandsHandler, []);
             } else {
                 $text = "Нет такой команды \n\n";
                 $text .= "Для вывода списка доступных команд введите /help".chr(10);
