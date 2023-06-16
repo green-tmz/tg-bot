@@ -3,7 +3,6 @@
 namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
-use Telegram\Bot\Laravel\Facades\Telegram;
 use App\Http\Controllers\Api\Telegram\MainController;
 
 /**
@@ -26,7 +25,6 @@ class AboutCommand extends Command
      */
     public function handle()
     {
-        $update = Telegram::getWebhookUpdates();
-        MainController::commandsHandler($update);
+        MainController::commandsHandler();
     }
 }
