@@ -36,28 +36,11 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
     Log::info($updates->message->entities);
     Log::info("-------");
 
-    // if ($updates->isType('callback_query')) {
-
-    //     $query = $updates->getCallbackQuery();
-    //     $data  = $query->getData();
-
-    //     Log::info("--- data ---");
-    //     Log::info($data);
-    //     Log::info("-------");
-
-    //    //$data - here is my command (for example - "cinema")
-
-    //     // $telegram->answerCallbackQuery([
-    //     //     'callback_query_id' => $query->getId()
-    //     // ]);
-
-    //     // try{
-    //     //     $telegram->triggerCommand($data,$commandsHandler);
-    //     // }  catch (Exception $e){
-    //     //     $this->log($e->getMessage());
-    //     // }
-
-    // }
+    if (($updates->message->entities) && ($updates->message->entities->type == 'bot_command')) {
+        Log::info("Command: ". $updates->message->text);
+    } else {
+        Log::info("Text: ". $updates->message->text);
+    }
 
 
     // //$command = "yourCommand" for example, $arguments = array of something
