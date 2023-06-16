@@ -36,8 +36,9 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
     Log::info($updates);
     Log::info("-------");
 
-    foreach ($updates as $update) {
-        Log::info($update['message']['text']);
+    foreach ($res1 as $update) {
+        Log::info($update['entities']);
+        break;
     }
 
     // if ($updates->isType('callback_query')) {
