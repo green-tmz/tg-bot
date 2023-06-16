@@ -25,12 +25,10 @@ class HelpCommand extends Command
     public function handle()
 
     {
-        $commands = $this->getTelegram()->getCommands();
-
-        $text = "<b>Список доступных команд:</b><br /><br />";
-        $text .= "/help - Основные команды<br />";
-        $text .= "/about - Описание бота<br />";
-        $text .= "/start - Основное меню<br />";
+        $text = "<b>Список доступных команд:</b>".PHP_EOL;
+        $text .= "/help - Основные команды".PHP_EOL;
+        $text .= "/about - Описание бота".PHP_EOL;
+        $text .= "/start - Основное меню".PHP_EOL;
 
         $this->replyWithMessage([
             'text' => $text,
