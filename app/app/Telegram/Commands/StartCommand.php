@@ -3,6 +3,7 @@
 namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
+use App\Http\Controllers\Api\Telegram\MainController;
 
 class StartCommand extends Command
 {
@@ -11,8 +12,6 @@ class StartCommand extends Command
 
     public function handle()
     {
-        $this->replyWithMessage([
-            'text' => 'Hey, there! Welcome to our bot!',
-        ]);
+        MainController::commandsHandler();
     }
 }
