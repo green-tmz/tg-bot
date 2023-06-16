@@ -29,9 +29,36 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
     ];
     Telegram::addCommands($commands);
     $commandsHandler = Telegram::commandsHandler(true);
-    $update = Telegram::getWebhookUpdates();
-    $res1 = json_decode($update, true);
-    Log::info($update->isType('callback_query'));
+    $updates = Telegram::getWebhookUpdates();
+    $res1 = json_decode($updates, true);
+    Log::info("--- callback_query ---");
+    Log::info($updates->isType('callback_query'));
+    Log::info("-------");
+
+    if ($updates->isType('callback_query')) {
+
+        $query = $updates->getCallbackQuery();
+        $data  = $query->getData();
+
+        Log::info("--- data ---");
+        Log::info($data);
+        Log::info("-------");
+
+       //$data - here is my command (for example - "cinema")
+
+        // $telegram->answerCallbackQuery([
+        //     'callback_query_id' => $query->getId()
+        // ]);
+
+        // try{
+        //     $telegram->triggerCommand($data,$commandsHandler);
+        // }  catch (Exception $e){
+        //     $this->log($e->getMessage());
+        // }
+
+    }
+
+
     // //$command = "yourCommand" for example, $arguments = array of something
     // $res = Telegram::getCommandBus()->execute($res1['message']['text'], [], $commandsHandler);
     // Log::info("---2---");
