@@ -23,22 +23,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
-    Log::info("--- commands ---");
-    $commands = [
-        AboutCommand::class
-    ];
-    Telegram::addCommands($commands);
+
+    // Telegram::addCommands($commands);
     $commandsHandler = Telegram::commandsHandler(true);
     $updates = Telegram::getWebhookUpdates();
     $res1 = json_decode($updates, true);
-    Log::info("--- callback_query ---");
-    Log::info($res1['message']['text']);
-    Log::info(isset($updates->message->entities));
-    // Log::info($updates->message->entities[0]->type);
-    Log::info("-------");
 
     if (isset($updates->message->entities) && ($updates->message->entities[0]->type == 'bot_command')) {
         Log::info("Command: ". $updates->message->text);
+        $commands = [
+            '/about' => AboutCommand::class
+        ];
+        Log::info("Commands: ". $commands);
     } else {
         Log::info("Text: ". $updates->message->text);
     }
