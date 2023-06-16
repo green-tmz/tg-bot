@@ -9,12 +9,12 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 /**
  * Class HelpCommand.
  */
-class TestCommand extends Command
+class HandlerCommand extends Command
 {
     /**
      * @var string Command Name
      */
-    protected string $name = 'test';
+    protected string $name = '';
 
     /**
      * @var array Command Aliases
@@ -24,7 +24,7 @@ class TestCommand extends Command
     /**
      * @var string Command Description
      */
-    protected string $description = 'Test command';
+    protected string $description = '';
 
     /**
      * {@inheritdoc}
