@@ -32,7 +32,7 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
     $updates = Telegram::getWebhookUpdates();
     $res1 = json_decode($updates, true);
     Log::info("--- callback_query ---");
-    Log::info($updates->isType('callback_query'));
+    Log::info($res1);
     Log::info("-------");
 
     if ($updates->isType('callback_query')) {
