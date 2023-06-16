@@ -27,10 +27,7 @@ class HelpCommand extends Command
     {
         $commands = $this->getTelegram()->getCommands();
 
-        $text = '<b>Список основных команд:</b>'.PHP_EOL;
-        foreach ($commands as $name => $command) {
-            $text .= sprintf('/%s - %s' . PHP_EOL, $name, $command->getDescription());
-        }
+        $text = printf("<b>Список доступных команд:</b>".PHP_EOL);
 
         $this->replyWithMessage(['text' => $text]);
 
