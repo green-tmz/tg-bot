@@ -28,14 +28,22 @@ class HelpCommand extends Command
         $response = $this->getUpdate();
 
         $text = '**Список основных команд:** \n\n';
-        $text .= '/start - основное меню \n\n';
-        $text .= '/help - список основных команд \n\n';
-        $text .= '/about - описание бота \n\n';
+        // $text .= '/start - основное меню \n\n';
+        // $text .= '/help - список основных команд \n\n';
+        // $text .= '/about - описание бота \n\n';
 
-        $this->sendMessage([
-            'chat_id' => $response->message->from->id,
-            'text' => $text
-        ]);
+        // $this->sendMessage([
+        //     'chat_id' => $response->message->from->id,
+        //     'text' => $text
+        // ]);
+        $commands = $this->getTelegram()->getCommands();
+
+        $text = '';
+        foreach ($commands as $name => $command) {
+            $text .= sprintf('/%s - %s' . PHP_EOL, $name, $command->getDescription());
+        }
+
+        $this->replyWithMessage(['text' => $text]);
 
     }
 }
