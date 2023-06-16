@@ -34,7 +34,7 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
         $commands = [
             '/about' => AboutCommand::class
         ];
-        Log::info("Commands: ". $commands);
+        Log::info("Commands: ". print_r($commands));
     } else {
         Log::info("Text: ". $updates->message->text);
     }
