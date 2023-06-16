@@ -32,7 +32,10 @@ class HelpCommand extends Command
         $text .= '/help - список основных команд \n\n';
         $text .= '/about - описание бота \n\n';
 
-        $this->replyWithMessage(compact('text'));
+        $this->sendMessage([
+            'chat_id' => $response->message->from->id,
+            'text' => $text
+        ]);
 
     }
 }
