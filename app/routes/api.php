@@ -31,7 +31,7 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
     $commandsHandler = Telegram::commandsHandler(true);
     $update = Telegram::getWebhookUpdates();
     $res1 = json_decode($update, true);
-    Log::info($res1->isType('callback_query'));
+    Log::info($update->isType('callback_query'));
     // //$command = "yourCommand" for example, $arguments = array of something
     // $res = Telegram::getCommandBus()->execute($res1['message']['text'], [], $commandsHandler);
     // Log::info("---2---");
