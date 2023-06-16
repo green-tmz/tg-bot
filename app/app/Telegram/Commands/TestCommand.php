@@ -29,7 +29,7 @@ class TestCommand extends Command
     /**
      * {@inheritdoc}
      */
-    public function handle($arguments)
+    public function handle()
     {
         $update = Telegram::getWebhookUpdates();
         $result = json_decode($update, True);
