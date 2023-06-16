@@ -33,6 +33,7 @@ Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
     $res1 = json_decode($updates, true);
     Log::info("--- callback_query ---");
     Log::info($res1);
+    Log::info($updates->type);
     Log::info("-------");
 
     if ($updates->isType('callback_query')) {
