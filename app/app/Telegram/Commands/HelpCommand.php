@@ -15,14 +15,9 @@ class HelpCommand extends Command
     protected string $name = 'help';
 
     /**
-     * @var array Command Aliases
-     */
-    protected array $aliases = ['listcommands'];
-
-    /**
      * @var string Command Description
      */
-    protected string $description = 'Help command, Get a list of all commands';
+    protected string $description = 'Основные команды';
 
     /**
      * {@inheritdoc}
@@ -32,10 +27,10 @@ class HelpCommand extends Command
     {
         $response = $this->getUpdate();
 
-        $text = 'Hey stranger, thanks for visiting me.'.chr(10).chr(10);
-        $text .= 'I am a bot and working for'.chr(10);
-        $text .= env('APP_URL').chr(10).chr(10);
-        $text .= 'Please come and visit me there.'.chr(10);
+        $text = '**Список основных команд:** \n\n';
+        $text .= '/start - основное меню \n\n';
+        $text .= '/help - список основных команд \n\n';
+        $text .= '/about - описание бота \n\n';
 
         $this->replyWithMessage(compact('text'));
 
