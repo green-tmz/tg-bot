@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\TestSdkController;
+use App\Telegram\Commands\AboutCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -22,10 +23,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
-    Log::info("---123---");
-    $commands = ['/about'];
+    Log::info("--- commands ---");
+    $commands = [
+        AboutCommand::class
+    ];
     Telegram::addCommands($commands);
+    Log::info("---------");
+    Log::info("--- commandsHandler ---");
     $commandsHandler = Telegram::commandsHandler(true);
+    Log::info("---------");
+    Log::info("--- text ---");
     $update = Telegram::getWebhookUpdates();
     $res1 = json_decode($update, true);
     Log::info("---1---");
