@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', function () {
     Log::info("---123---");
-    $commands = ['about'];
+    $commands = ['/about'];
     Telegram::addCommands($commands);
     $commandsHandler = Telegram::commandsHandler(true);
     $update = Telegram::getWebhookUpdates();
