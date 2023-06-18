@@ -22,9 +22,6 @@ class MainController extends Controller
         //     'parse_mode' => 'html'
         // ]);
 
-        Telegram::sendAudio([
-            'chat_id' => $updates->message->from->id,
-            'audio' => 'http://stream.delovaya-volna.ru/radio/HUMOR_FM_TUIMAZY.MP3',
-        ]);
+        Log::info(Telegram::getMe());
     }
 }
