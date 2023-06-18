@@ -25,6 +25,14 @@ class MainController extends Controller
 
         // Log::info(Telegram::getMe());
 
-        InputFile::create('http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3', 'DACHA_TUIMAZY');
+        // InputFile::create('http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3', 'DACHA_TUIMAZY');
+
+        $res = Telegram::sendAudio([
+            'chat_id' => $updates->message->from->id,
+            'audio' => 'http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3',
+            // 'parse_mode' => 'html'
+        ]);
+
+        Log::info($res);
     }
 }
