@@ -26,7 +26,7 @@ class MainController extends Controller
 
         Telegram::sendAudio([
             'chat_id' => $updates->message->from->id,
-            'text' => 'http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3',
+            'audio' => 'http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3',
             // 'parse_mode' => 'html'
         ]);
     }
