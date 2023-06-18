@@ -34,16 +34,12 @@ class MainController extends Controller
         //     // 'parse_mode' => 'html'
         // ]);
 
-        $inputMediaPhoto = ["type" => "audio", "media" => 'http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3', "caption" => '', "parse_mode" => "Markdown"];
-        $inputMediaPhoto = json_encode($inputMediaPhoto);
-
-
-        $res = Telegram::sendMessageMedia([
-                'chat_id' => $updates->message->from->id,
-                // 'message_id' => $message_id,
-                'media' => $inputMediaPhoto
+        $response = Telegram::sendAudio([
+            'chat_id' => 'CHAT_ID',
+            'photo' => \Telegram\Bot\FileUpload\InputFile::create("http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3"),
+            'caption' => ''
         ]);
 
-        Log::info($res);
+        Log::info($response);
     }
 }
