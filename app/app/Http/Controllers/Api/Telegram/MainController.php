@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api\Telegram;
 
-use App\Http\Controllers\Controller;
+use GuzzleHttp\json;
 use Illuminate\Support\Facades\Log;
-use Telegram\Bot\Laravel\Facades\Telegram;
+use App\Http\Controllers\Controller;
 use Telegram\Bot\FileUpload\InputFile;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class MainController extends Controller
 {
@@ -27,10 +28,20 @@ class MainController extends Controller
 
         // InputFile::create('http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3', 'DACHA_TUIMAZY');
 
-        $res = Telegram::sendAudio([
-            'chat_id' => $updates->message->from->id,
-            'audio' => 'http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3',
-            // 'parse_mode' => 'html'
+        // $res = Telegram::sendAudio([
+        //     'chat_id' => $updates->message->from->id,
+        //     'audio' => 'http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3',
+        //     // 'parse_mode' => 'html'
+        // ]);
+
+        $inputMediaPhoto = ["type" => "audio", "media" => 'http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3', "caption" => '', "parse_mode" => "Markdown"];
+        $inputMediaPhoto = json_encode($inputMediaPhoto);
+
+
+        $res = Telegram::sendMessageMedia([
+                'chat_id' => $updates->message->from->id,
+                // 'message_id' => $message_id,
+                'media' => $inputMediaPhoto
         ]);
 
         Log::info($res);
