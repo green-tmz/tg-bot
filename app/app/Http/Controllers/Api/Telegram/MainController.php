@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Telegram;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 use Telegram\Bot\Laravel\Facades\Telegram;
+use Telegram\Bot\FileUpload\InputFile;
 
 class MainController extends Controller
 {
@@ -24,10 +25,6 @@ class MainController extends Controller
 
         // Log::info(Telegram::getMe());
 
-        Telegram::sendAudio([
-            'chat_id' => $updates->message->from->id,
-            'audio' => 'http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3',
-            // 'parse_mode' => 'html'
-        ]);
+        InputFile::create('http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3', 'DACHA_TUIMAZY');
     }
 }
