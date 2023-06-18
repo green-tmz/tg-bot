@@ -22,6 +22,12 @@ class MainController extends Controller
         //     'parse_mode' => 'html'
         // ]);
 
-        Log::info(Telegram::getMe());
+        // Log::info(Telegram::getMe());
+
+        Telegram::sendAudio([
+            'chat_id' => $updates->message->from->id,
+            'text' => 'http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3',
+            // 'parse_mode' => 'html'
+        ]);
     }
 }
