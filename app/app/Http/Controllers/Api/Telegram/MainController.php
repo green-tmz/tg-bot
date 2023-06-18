@@ -36,7 +36,7 @@ class MainController extends Controller
 
         $response = Telegram::sendAudio([
             'chat_id' => 'CHAT_ID',
-            'audio' => \Telegram\Bot\FileUpload\InputFile::create("http://stream.delovaya-volna.ru/radio/DACHA_TUIMAZY.MP3"),
+            'audio' => \Telegram\Bot\FileUpload\InputFile::create("http://stream.delovaya-volna.ru/radio/HUMOR_FM_TUIMAZY.MP3"),
             'caption' => ''
         ]);
 
