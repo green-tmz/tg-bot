@@ -16,10 +16,15 @@ class MainController extends Controller
         // $text .= "/about - Описание бота".PHP_EOL;
         // $text .= "/start - Основное меню".PHP_EOL;
 
-        Telegram::sendMessage([
+        // Telegram::sendMessage([
+        //     'chat_id' => $updates->message->from->id,
+        //     'text' => $text,
+        //     'parse_mode' => 'html'
+        // ]);
+
+        Telegram::sendAudio([
             'chat_id' => $updates->message->from->id,
-            'text' => $text,
-            'parse_mode' => 'html'
+            'audio' => 'http://stream.delovaya-volna.ru/radio/HUMOR_FM_TUIMAZY.MP3',
         ]);
     }
 }
