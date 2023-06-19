@@ -17,8 +17,7 @@ class StartCommand extends Command
         // $text .= "/about - Описание бота".PHP_EOL;
         // $text .= "/start - Основное меню".PHP_EOL;
 
-        $this->sendMessage([
-            'chat_id' => $response->message->from->id,
+        $this->replyWithMessage([
             'text' => $text,
             'parse_mode' => 'html'
         ]);
