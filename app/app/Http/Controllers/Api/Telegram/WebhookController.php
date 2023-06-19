@@ -12,7 +12,7 @@ class WebhookController extends Controller
     {
         $updates = Telegram::getWebhookUpdates();
 
-        Log::info("Res: ".print_r($updates));
+        Log::info("Res: ".print_r(json_decode($updates), true));
 
         if (isset($updates->message->entities) && ($updates->message->entities[0]->type == 'bot_command')) {
             $commandName = ucfirst(substr($updates->message->text, 1));
