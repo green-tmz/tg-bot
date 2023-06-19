@@ -14,10 +14,10 @@ class StartCommand extends Command
     {
         $keyboard = Keyboard::make()
             ->inline()
-            ->row(
+            ->row([
                 Keyboard::inlineButton(['text' => 'Test', 'callback_data' => 'data']),
                 Keyboard::inlineButton(['text' => 'Btn 2', 'callback_data' => 'data_from_btn2'])
-            );
+            ]);
 
         $text = "Добро пожаловать в бот GreenSoftPro".PHP_EOL.PHP_EOL;
         $text .= "Выберите категорию:".PHP_EOL;
