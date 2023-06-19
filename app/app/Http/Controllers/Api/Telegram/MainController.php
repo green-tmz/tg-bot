@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Telegram;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 class MainController extends Controller
@@ -28,12 +29,14 @@ class MainController extends Controller
             )
         );
 
-        Telegram::sendMessage([
+        $res = Telegram::sendMessage([
             'chat_id' => $updates->message->from->id,
             'text' => $text,
             'parse_mode' => 'html',
             'disable_web_page_preview' => false,
             'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
         ]);
+
+        Log::info('Res: '.$res);
     }
 }
