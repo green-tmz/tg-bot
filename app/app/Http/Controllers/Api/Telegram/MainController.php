@@ -29,7 +29,7 @@ class MainController extends Controller
             )
         );
 
-        $res = Telegram::sendMessage([
+        Telegram::sendMessage([
             'chat_id' => $updates->message->from->id,
             'text' => $text,
             'parse_mode' => 'html',
@@ -37,6 +37,5 @@ class MainController extends Controller
             'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
         ]);
 
-        Log::info('Res: '.$res);
     }
 }

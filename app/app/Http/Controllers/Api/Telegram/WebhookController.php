@@ -12,6 +12,8 @@ class WebhookController extends Controller
     {
         $updates = Telegram::getWebhookUpdates();
 
+        Log::info("Res: ".$updates);
+
         if (isset($updates->message->entities) && ($updates->message->entities[0]->type == 'bot_command')) {
             $commandName = ucfirst(substr($updates->message->text, 1));
             $commandClass = 'App\\Telegram\\Commands\\'.$commandName.'Command';
