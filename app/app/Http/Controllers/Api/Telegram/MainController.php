@@ -21,10 +21,10 @@ class MainController extends Controller
         $text = "Выберите категорию:".PHP_EOL;
         $keyboard = array(
             array(
-               array('text'=>'Радио','callback_data'=>'{"action":"like","count":0,"text":":like:"}'),
+               array('text'=>'Радио','callback_data'=>'{"action":"like","count":0,"text":"radio"}'),
             ),
             array(
-                array('text'=>'Запись','callback_data'=>'{"action":"like","count":0,"text":":like:"}'),
+                array('text'=>'Запись','callback_data'=>'{"action":"like","count":0,"text":"online"}'),
             )
         );
 
