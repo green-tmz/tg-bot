@@ -3,6 +3,7 @@
 namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
+use Telegram\Bot\Keyboard\Keyboard;
 
 class StartCommand extends Command
 {
@@ -11,23 +12,12 @@ class StartCommand extends Command
 
     public function handle()
     {
-        $category = json_encode([
-            'inline_keyboard' => [
-                [
-                    [
-                        'text' => 'Радио',
-                        'callback_data' => 'test_1',
-                    ]
-                ],
-                [
-                    [
-                        'text' => 'Онлайн запись',
-                        'callback_data' => 'test_2',
-                    ],
-                ],
-            ]
-        ]);
-
+        $keyboard = Keyboard::make()
+            ->inline()
+            ->row(
+                Keyboard::inlineButton(['text' => 'Test', 'callback_data' => 'data']),
+                Keyboard::inlineButton(['text' => 'Btn 2', 'callback_data' => 'data_from_btn2'])
+            );
 
         $text = "Добро пожаловать в бот GreenSoftPro".PHP_EOL.PHP_EOL;
         $text .= "Выберите категорию:".PHP_EOL;
@@ -36,8 +26,8 @@ class StartCommand extends Command
 
         $this->replyWithMessage([
             'text' => $text,
-            // 'parse_mode' => 'html',
-            'reply_markup' => $category
+            'parse_mode' => 'html',
+            'reply_markup' => $keyboard
         ]);
     }
 }
