@@ -15,13 +15,13 @@ class StartCommand extends Command
             'inline_keyboard' => [
                 [
                     [
-                        'text' => 'Button 1',
+                        'text' => 'Радио',
                         'callback_data' => 'test_1',
                     ]
                 ],
                 [
                     [
-                        'text' => 'Button 2',
+                        'text' => 'Онлайн запись',
                         'callback_data' => 'test_2',
                     ],
                 ],
@@ -36,7 +36,7 @@ class StartCommand extends Command
 
         $this->replyWithMessage([
             'text' => $text,
-            'parse_mode' => 'html',
+            // 'parse_mode' => 'html',
             'reply_markup' => $category
         ]);
     }
