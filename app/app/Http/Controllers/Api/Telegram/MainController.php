@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\Telegram;
 
-use GuzzleHttp\json;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Telegram\Bot\FileUpload\InputFile;
@@ -36,7 +35,7 @@ class MainController extends Controller
 
         $response = Telegram::sendAudio([
             'chat_id' => 'CHAT_ID',
-            'audio' => \Telegram\Bot\FileUpload\InputFile::create("http://stream.delovaya-volna.ru/radio/HUMOR_FM_TUIMAZY.MP3"),
+            'audio' => InputFile::create("http://stream.delovaya-volna.ru/radio/HUMOR_FM_TUIMAZY.MP3"),
             'caption' => ''
         ]);
 
