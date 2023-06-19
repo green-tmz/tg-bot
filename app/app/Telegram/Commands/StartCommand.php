@@ -12,7 +12,7 @@ class StartCommand extends Command
     public function handle()
     {
         $category = json_encode([
-            'inline_keyboard' => [
+            'keyboard' => [
                 [
                     [
                         'text' => 'Button 1',
@@ -25,6 +25,8 @@ class StartCommand extends Command
                     ],
                 ]
             ],
+            'one_time_keyboard' => TRUE,
+            'resize_keyboard' => TRUE,
         ]);
 
 
