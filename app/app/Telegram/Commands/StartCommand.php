@@ -4,6 +4,7 @@ namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
 use Telegram\Bot\Keyboard\Keyboard;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class StartCommand extends Command
 {
@@ -15,7 +16,7 @@ class StartCommand extends Command
         $firstButton = Keyboard::inlineButton(['text' => 'Test', 'callback_data' => 'data']);
         $secondButton = Keyboard::inlineButton(['text' => 'Btn 2', 'callback_data' => 'data_from_btn2']);
 
-        $keyboard = $this->replyKeyboardMarkup([])->inline()
+        $keyboard = Telegram::replyKeyboardMarkup([])->inline()
             ->row($firstButton)
             ->row($secondButton);
 
