@@ -11,7 +11,23 @@ class StartCommand extends Command
 
     public function handle()
     {
-        $response = $this->getUpdate();
+        $category = json_encode([
+            'inline_keyboard' => [
+                [
+                    [
+                        'text' => 'Button 1',
+                        'callback_data' => 'test_2',
+                    ],
+
+                    [
+                        'text' => 'Button 2',
+                        'callback_data' => 'test_2',
+                    ],
+                ]
+            ],
+        ]);
+
+
         $text = "Добро пожаловать в бот GreenSoftPro".PHP_EOL.PHP_EOL;
         $text .= "Выберите категорию:".PHP_EOL;
         // $text .= "/about - Описание бота".PHP_EOL;
@@ -19,7 +35,8 @@ class StartCommand extends Command
 
         $this->replyWithMessage([
             'text' => $text,
-            'parse_mode' => 'html'
+            'parse_mode' => 'html',
+            'reply_markup' => $category
         ]);
     }
 }
