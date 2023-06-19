@@ -29,8 +29,12 @@ class WebhookController extends Controller
                     'text' => $text
                 ]);
             }
-        } else {
-            Log::info("Text: ". $updates->message->text);
         }
+
+        if (isset($updates->callback_query)) {
+            Log::info("Text: ". $updates->callback_data);
+        }
+
+        Log::info("Text: ". $updates->message->text);
     }
 }
