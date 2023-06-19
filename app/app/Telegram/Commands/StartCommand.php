@@ -15,8 +15,8 @@ class StartCommand extends Command
         $keyboard = Keyboard::make()
             ->inline()
             ->row([
-                [Keyboard::inlineButton(['text' => 'Test', 'callback_data' => 'data'])],
-                [Keyboard::inlineButton(['text' => 'Btn2', 'callback_data' => 'data_from_btn2'])]
+                [Keyboard::button(['text' => 'Test', 'callback_data' => 'data'])],
+                [Keyboard::button(['text' => 'Btn2', 'callback_data' => 'data_from_btn2'])]
             ]);
 
         $text = "Добро пожаловать в бот GreenSoftPro".PHP_EOL.PHP_EOL;
