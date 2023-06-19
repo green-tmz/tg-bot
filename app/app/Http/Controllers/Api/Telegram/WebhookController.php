@@ -32,7 +32,8 @@ class WebhookController extends Controller
         }
 
         if (isset($updates->callback_query)) {
-            Log::info("data: ". print_r(json_decode($updates->callback_query), true));
+            $data = $updates->callback_query->data;
+            Log::info("data: ". $data);
         }
 
         // Log::info("Text: ". $updates->message->text);
