@@ -12,21 +12,20 @@ class StartCommand extends Command
     public function handle()
     {
         $category = json_encode([
-            'keyboard' => [
+            'inline_keyboard' => [
                 [
                     [
                         'text' => 'Button 1',
-                        'callback_data' => 'test_2',
-                    ],
-
+                        'callback_data' => 'test_1',
+                    ]
+                ],
+                [
                     [
                         'text' => 'Button 2',
                         'callback_data' => 'test_2',
                     ],
-                ]
-            ],
-            'one_time_keyboard' => TRUE,
-            'resize_keyboard' => TRUE,
+                ],
+            ]
         ]);
 
 
