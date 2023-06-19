@@ -13,10 +13,10 @@ class StartCommand extends Command
     public function handle()
     {
         $keyboard = Keyboard::make()
-            ->inline()
+            ->button()
             ->row([
-                [Keyboard::button(['text' => 'Test', 'callback_data' => 'data'])],
-                [Keyboard::button(['text' => 'Btn2', 'callback_data' => 'data_from_btn2'])]
+                [Keyboard::inlineButton(['text' => 'Test', 'callback_data' => 'data'])],
+                [Keyboard::inlineButton(['text' => 'Btn2', 'callback_data' => 'data_from_btn2'])]
             ]);
 
         $text = "Добро пожаловать в бот GreenSoftPro".PHP_EOL.PHP_EOL;
