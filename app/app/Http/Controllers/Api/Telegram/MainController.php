@@ -10,18 +10,21 @@ class MainController extends Controller
     public static function commandsHandler()
     {
         $updates = Telegram::getWebhookUpdates();
-        $text = "Привет ".$updates->message->from->first_name.PHP_EOL;
-        // $text .= "/help - Основные команды".PHP_EOL;
-        // $text .= "/about - Описание бота".PHP_EOL;
-        // $text .= "/start - Основное меню".PHP_EOL;
+        $text = "Добро пожаловать в бот GreenSoftPro";
 
+        Telegram::sendMessage([
+            'chat_id' => $updates->message->from->id,
+            'text' => $text,
+            'parse_mode' => 'html'
+        ]);
+
+        $text = "Выберите категорию:".PHP_EOL;
         $keyboard = array(
             array(
-               array('text'=>':like:','callback_data'=>'{"action":"like","count":0,"text":":like:"}'),
-               array('text'=>':joy:','callback_data'=>'{"action":"joy","count":0,"text":":joy:"}'),
-               array('text'=>':hushed:','callback_data'=>'{"action":"hushed","count":0,"text":":hushed:"}'),
-               array('text'=>':cry:','callback_data'=>'{"action":"cry","count":0,"text":":cry:"}'),
-               array('text'=>':rage:','callback_data'=>'{"action":"rage","count":0,"text":":rage:"}')
+               array('text'=>'Радио','callback_data'=>'{"action":"like","count":0,"text":":like:"}'),
+            ),
+            array(
+                array('text'=>'Запись','callback_data'=>'{"action":"like","count":0,"text":":like:"}'),
             )
         );
 
