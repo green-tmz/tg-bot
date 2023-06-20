@@ -48,7 +48,7 @@ class MainController extends Controller
     {
         $method = lcfirst($callback->data).'Callback';
         if (method_exists(new self, $method)) {
-            call_user_func_array([$this, $method], [$callback]);
+            call_user_func_array([$this, $method], [$callback['items']]);
         }
     }
 
