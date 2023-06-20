@@ -125,5 +125,6 @@ class MainController extends Controller
     public function radioCallback($updates)
     {
         header("Location: https://t.me/gs_radio_bot");
+        die();
     }
 }
