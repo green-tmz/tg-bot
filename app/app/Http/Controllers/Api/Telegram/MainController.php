@@ -47,6 +47,7 @@ class MainController extends Controller
     public function callbackHandler($callback)
     {
         $method = lcfirst($callback->data).'Callback';
+
         if (method_exists(new self, $method)) {
             call_user_func_array([$this, $method], [$callback]);
         }
@@ -88,7 +89,7 @@ class MainController extends Controller
             )
         );
 
-        Telegram::sendMessage([
+        Telegram::editMessageText([
             'chat_id' => $updates['from']['id'],
             'message_id' => $updates['message']['message_id'],
             'text' => $text,
