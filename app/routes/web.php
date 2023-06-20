@@ -21,7 +21,7 @@ Route::get('/', function() {
 Route::prefix('telegram')->group(function() {
     Route::get('/setwebhook', function () {
         return Telegram::setWebhook([
-            'url' => '{env("TELEGRAM_WEBHOOK_URL")}'
+            'url' => env("TELEGRAM_WEBHOOK_URL")
         ]);
     });
 });
