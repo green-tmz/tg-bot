@@ -130,8 +130,6 @@ class MainController extends Controller
             'chat_id' => '5936261673',
             'from_chat_id' => $updates['from']['id'],
             'message_id' => $updates['message']['message_id'],
-            'text' => $text,
-            'parse_mode' => 'html'
         ]);
     }
 }
