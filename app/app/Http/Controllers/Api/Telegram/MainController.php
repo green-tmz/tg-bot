@@ -125,12 +125,12 @@ class MainController extends Controller
     public function radioCallback($updates)
     {
         Log::info(print_r(json_decode($updates) ,true));
-        // $text = "https://t.me/gs_radio_bot";
+        $text = "https://t.me/gs_radio_bot";
 
-        // Telegram::forwardMessage([
-        //     'chat_id' => '5936261673',
-        //     'from_chat_id' => $updates['from']['id'],
-        //     'message_id' => $updates['message']['message_id'],
-        // ]);
+        Telegram::forwardMessage([
+            'chat_id' => '5936261673',
+            'from_chat_id' => $updates['message']['from']['id'],
+            'message_id' => $updates['message']['message_id'],
+        ]);
     }
 }
