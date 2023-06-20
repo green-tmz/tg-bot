@@ -44,11 +44,11 @@ class MainController extends Controller
 
     }
 
-    public function callbackHandler($callback, $updates)
+    public function callbackHandler($callback)
     {
-        $method = lcfirst($callback).'Callback';
+        $method = lcfirst($callback->data).'Callback';
         if (method_exists(new self, $method)) {
-            call_user_func_array([$this, $method], [$updates]);
+            call_user_func_array([$this, $method], [$callback]);
         }
     }
 
