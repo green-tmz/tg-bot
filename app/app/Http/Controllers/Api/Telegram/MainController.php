@@ -103,7 +103,7 @@ class MainController extends Controller
         $text = "<b>Выберите бота:</b>".PHP_EOL;
         $keyboard = array(
             array(
-               array('text'=>'Радио','callback_data'=>'https://t.me/gs_radio_bot'),
+               array('text'=>'Радио','callback_data'=>'radio'),
             ),
             array(
                 array('text'=>'Онлайн запись','callback_data'=>'online'),
@@ -124,12 +124,6 @@ class MainController extends Controller
 
     public function radioCallback($updates)
     {
-        $text = "https://t.me/gs_radio_bot";
-
-        Telegram::sendMessage([
-            'chat_id' => $updates['from']['id'],
-            'text' => $text,
-            'parse_mode' => 'html'
-        ]);
+        header("Location: https://t.me/gs_radio_bot");
     }
 }
