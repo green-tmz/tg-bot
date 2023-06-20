@@ -48,7 +48,7 @@ class MainController extends Controller
         }
     }
 
-    private function botsCallback()
+    public function botsCallback()
     {
         Log::info("Ok222");
         // $keyboard = array(
