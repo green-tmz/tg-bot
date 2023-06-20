@@ -97,4 +97,28 @@ class MainController extends Controller
             'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
         ]);
     }
+
+    public function tgCallback($updates)
+    {
+        $text = "<b>Выберите бота:</b>".PHP_EOL;
+        $keyboard = array(
+            array(
+               array('text'=>'Радио','callback_data'=>'radio'),
+            ),
+            array(
+                array('text'=>'Онлайн запись','callback_data'=>'online'),
+            ),
+            array(
+                array('text'=>'Назад','callback_data'=>'backToMain'),
+            )
+        );
+
+        Telegram::editMessageText([
+            'chat_id' => $updates['from']['id'],
+            'message_id' => $updates['message']['message_id'],
+            'text' => $text,
+            'parse_mode' => 'html',
+            'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
+        ]);
+    }
 }
