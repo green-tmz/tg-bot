@@ -109,7 +109,7 @@ class MainController extends Controller
                 array('text'=>'Онлайн запись','callback_data'=>'online'),
             ),
             array(
-                array('text'=>'Назад','callback_data'=>'backToMain'),
+                array('text'=>'Назад','callback_data'=>'bots'),
             )
         );
 
