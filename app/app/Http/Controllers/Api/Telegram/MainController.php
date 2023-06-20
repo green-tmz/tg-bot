@@ -44,27 +44,28 @@ class MainController extends Controller
         Log::info("callback: ".$callback);
         $method = lcfirst($callback).'Callback';
         if (method_exists(new self, $method)) {
-            Log::info("Ok");
+            self::botsCallback();
         }
     }
 
-    private function botsCallback()
+    private static function botsCallback()
     {
-        $keyboard = array(
-            array(
-               array('text'=>'Боты','callback_data'=>'bots'),
-            ),
-            array(
-                array('text'=>'Запись','callback_data'=>'online'),
-            )
-        );
+        Log::info("Ok222");
+        // $keyboard = array(
+        //     array(
+        //        array('text'=>'Боты','callback_data'=>'bots'),
+        //     ),
+        //     array(
+        //         array('text'=>'Запись','callback_data'=>'online'),
+        //     )
+        // );
 
-        Telegram::sendMessage([
-            'chat_id' => $updates->message->from->id,
-            'text' => $text,
-            'parse_mode' => 'html',
-            'disable_web_page_preview' => false,
-            'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
-        ]);
+        // Telegram::sendMessage([
+        //     'chat_id' => $updates->message->from->id,
+        //     'text' => $text,
+        //     'parse_mode' => 'html',
+        //     'disable_web_page_preview' => false,
+        //     'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
+        // ]);
     }
 }
