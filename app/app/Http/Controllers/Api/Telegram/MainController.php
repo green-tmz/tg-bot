@@ -103,7 +103,7 @@ class MainController extends Controller
         $text = "<b>Выберите бота:</b>".PHP_EOL;
         $keyboard = array(
             array(
-               array('text'=>'Радио','callback_data'=>'radio'),
+               array('text'=>'Радио','callback_data'=>'https://t.me/gs_radio_bot'),
             ),
             array(
                 array('text'=>'Онлайн запись','callback_data'=>'online'),
@@ -126,10 +126,8 @@ class MainController extends Controller
     {
         $text = "https://t.me/gs_radio_bot";
 
-        Telegram::forwardMessage([
+        Telegram::sendMessage([
             'chat_id' => $updates['from']['id'],
-            'from_chat_id' => $updates['from']['id'],
-            'message_id' => $updates['message']['message_id'],
             'text' => $text,
             'parse_mode' => 'html'
         ]);
