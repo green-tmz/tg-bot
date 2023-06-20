@@ -42,7 +42,7 @@ class MainController extends Controller
     public function callbackHandler($callback)
     {
         Log::info("callback: ".$callback);
-        $method = lcfirst($callback).'Callback';
+        $method = lcfirst($callback).'Callback()';
         if (method_exists(new self, $method)) {
             $this->$method;
         }
