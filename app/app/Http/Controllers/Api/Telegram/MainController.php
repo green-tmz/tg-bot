@@ -54,6 +54,7 @@ class MainController extends Controller
 
     public function botsCallback()
     {
+        $updates = Telegram::getWebhookUpdates();
         $text = "<b>Выберите месенджер:</b>".PHP_EOL;
         $keyboard = array(
             array(
@@ -65,7 +66,7 @@ class MainController extends Controller
         );
 
         Telegram::sendMessage([
-            // 'chat_id' => $this->updates->message->from->id,
+            'chat_id' => $updates->message->from->id,
             'text' => $text,
             'parse_mode' => 'html',
             'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
