@@ -63,7 +63,7 @@ class MainController extends Controller
                 array('text'=>'Whatsapp','callback_data'=>'wa'),
             ),
             array(
-                array('text'=>'Назад','callback_data'=>'back'),
+                array('text'=>'Назад','callback_data'=>'backToMain'),
             )
         );
 
@@ -76,8 +76,24 @@ class MainController extends Controller
         ]);
     }
 
-    public function backCallback($updates)
+    public function backToMainCallback($updates)
     {
-        Log::info(print_r(json_decode($updates), 1));
+        $text = "Выберите категорию:".PHP_EOL;
+        $keyboard = array(
+            array(
+               array('text'=>'Боты','callback_data'=>'bots'),
+            ),
+            array(
+                array('text'=>'Запись','callback_data'=>'online'),
+            )
+        );
+
+        Telegram::sendMessage([
+            'chat_id' => $updates['from']['id'],
+            'message_id' => $updates['message']['message_id'],
+            'text' => $text,
+            'parse_mode' => 'html',
+            'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
+        ]);
     }
 }
