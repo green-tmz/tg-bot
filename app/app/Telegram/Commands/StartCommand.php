@@ -12,6 +12,6 @@ class StartCommand extends Command
 
     public function handle()
     {
-        MainController::commandsHandler();
+        (new MainController)->commandsHandler();
     }
 }

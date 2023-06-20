@@ -8,7 +8,7 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 
 class MainController extends Controller
 {
-    public static function commandsHandler()
+    public function commandsHandler()
     {
         $updates = Telegram::getWebhookUpdates();
         $text = "Добро пожаловать в бот GreenSoftPro";
@@ -39,16 +39,16 @@ class MainController extends Controller
 
     }
 
-    public static function callbackHandler($callback)
+    public function callbackHandler($callback)
     {
         Log::info("callback: ".$callback);
         $method = lcfirst($callback).'Callback';
         if (method_exists(new self, $method)) {
-            self::botsCallback();
+            $this->botsCallback();
         }
     }
 
-    private static function botsCallback()
+    private function botsCallback()
     {
         Log::info("Ok222");
         // $keyboard = array(
