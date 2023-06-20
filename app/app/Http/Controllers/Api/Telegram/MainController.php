@@ -54,6 +54,7 @@ class MainController extends Controller
 
     public function botsCallback($updates)
     {
+        Log::info('updates: '.print_r($updates, 1));
         $text = "<b>Выберите месенджер:</b>".PHP_EOL;
         $keyboard = array(
             array(
