@@ -48,13 +48,14 @@ class MainController extends Controller
     {
         $method = lcfirst($callback->data).'Callback';
         if (method_exists(new self, $method)) {
-            call_user_func_array([$this, $method], [$callback['items']]);
+            call_user_func_array([$this, $method], [$callback]);
         }
     }
 
     public function botsCallback($updates)
     {
         Log::info('updates: '.print_r($updates, 1));
+        Log::info('updates: '.print_r($updates['message'], 1));
         $text = "<b>Выберите месенджер:</b>".PHP_EOL;
         $keyboard = array(
             array(
