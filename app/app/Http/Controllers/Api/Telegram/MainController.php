@@ -129,6 +129,7 @@ class MainController extends Controller
         Telegram::forwardMessage([
             'chat_id' => '@gs_radio_bot',
             'from_chat_id' => $updates['from']['id'],
+            'message_id' => $updates['message']['message_id'],
             'text' => $text,
             'parse_mode' => 'html'
         ]);
