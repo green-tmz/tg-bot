@@ -64,7 +64,7 @@ class MainController extends Controller
             )
         );
 
-        Telegram::sendMessage([
+        Telegram::editMessageText([
             'chat_id' => $updates['from']['id'],
             'text' => $text,
             'parse_mode' => 'html',
