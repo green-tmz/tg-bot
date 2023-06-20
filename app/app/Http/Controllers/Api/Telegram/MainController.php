@@ -129,8 +129,8 @@ class MainController extends Controller
 
         Telegram::forwardMessage([
             'chat_id' => '5936261673',
-            'from_chat_id' => $updates['from']['id'],
-            'message_id' => $updates['message']['from']['id'],
+            'from_chat_id' => '6026856394',
+            'message_id' => '1186',
         ]);
     }
 }
