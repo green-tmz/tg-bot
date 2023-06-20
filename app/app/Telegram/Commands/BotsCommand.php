@@ -3,6 +3,7 @@
 namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class HelpCommand.
@@ -27,6 +28,7 @@ class BotsCommand extends Command
     {
         $text = "<b>Список ботов:</b>".PHP_EOL;
 
+        Log::info("Bots222");
         $this->replyWithMessage([
             'text' => $text,
             'parse_mode' => 'html'

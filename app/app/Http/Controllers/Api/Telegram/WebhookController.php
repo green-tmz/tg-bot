@@ -40,7 +40,6 @@ class WebhookController extends Controller
 
             Log::info("callbackClass: ". $callbackClass);
             if (class_exists($callbackClass)) {
-                Log::info("callbackClass2: ". $callbackClass);
                 Telegram::addCommands([$callbackClass]);
                 Telegram::commandsHandler(true);
             }
