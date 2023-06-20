@@ -121,4 +121,15 @@ class MainController extends Controller
             'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
         ]);
     }
+
+    public function radioCallback($updates)
+    {
+        $text = "https://t.me/gs_radio_bot";
+
+        Telegram::sendMessage([
+            'chat_id' => $updates['from']['id'],
+            'text' => $text,
+            'parse_mode' => 'html'
+        ]);
+    }
 }
