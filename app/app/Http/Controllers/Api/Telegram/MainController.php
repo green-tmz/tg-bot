@@ -38,4 +38,9 @@ class MainController extends Controller
         ]);
 
     }
+
+    public static function callbackHandler($callback)
+    {
+        Log::info("callback: ".$callback);
+    }
 }

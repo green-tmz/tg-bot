@@ -33,16 +33,7 @@ class WebhookController extends Controller
 
         if (isset($updates->callback_query)) {
             $data = $updates->callback_query->data;
-            Log::info("data: ". $data);
-
-            $callbackName = ucfirst($data);
-            $callbackClass = 'App\\Telegram\\Commands\\'.$callbackName.'Command';
-
-            Log::info("callbackClass: ". $callbackClass);
-            if (class_exists($callbackClass)) {
-                Telegram::addCommands([$callbackClass]);
-                // Telegram::commandsHandler(true);
-            }
+            MainController::callbackHandler($data);
         }
 
         // Log::info("Text: ". $updates->message->text);
