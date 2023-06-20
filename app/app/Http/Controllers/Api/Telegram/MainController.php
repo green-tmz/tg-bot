@@ -67,6 +67,7 @@ class MainController extends Controller
 
         Telegram::editMessageText([
             'chat_id' => $updates['from']['id'],
+            'message_id' => $updates['message']['message_id'],
             'text' => $text,
             'parse_mode' => 'html',
             'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
