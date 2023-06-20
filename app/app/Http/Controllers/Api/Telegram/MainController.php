@@ -78,6 +78,6 @@ class MainController extends Controller
 
     public function backCallback($updates)
     {
-        Log::info($updates);
+        Log::info(print_r(json_decode($updates), 1));
     }
 }
