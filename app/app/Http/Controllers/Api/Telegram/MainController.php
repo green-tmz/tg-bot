@@ -61,6 +61,9 @@ class MainController extends Controller
             ),
             array(
                 array('text'=>'Whatsapp','callback_data'=>'wa'),
+            ),
+            array(
+                array('text'=>'Назад','callback_data'=>'back'),
             )
         );
 
@@ -71,5 +74,10 @@ class MainController extends Controller
             'parse_mode' => 'html',
             'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
         ]);
+    }
+
+    public function backCallback($updates)
+    {
+        Log::info($updates);
     }
 }
