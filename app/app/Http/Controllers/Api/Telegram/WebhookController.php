@@ -31,7 +31,7 @@ class WebhookController extends Controller
 
         if (isset($updates->callback_query)) {
             $data = $updates->callback_query->data;
-            (new MainController)->callbackHandler($data);
+            (new MainController)->callbackHandler($data, $updates);
         }
 
         // Log::info("Text: ". $updates->message->text);

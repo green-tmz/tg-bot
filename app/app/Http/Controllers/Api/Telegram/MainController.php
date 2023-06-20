@@ -44,17 +44,16 @@ class MainController extends Controller
 
     }
 
-    public function callbackHandler($callback)
+    public function callbackHandler($callback, $updates)
     {
         $method = lcfirst($callback).'Callback';
         if (method_exists(new self, $method)) {
-            call_user_func_array([$this, $method], []);
+            call_user_func_array([$this, $method], [$updates]);
         }
     }
 
-    public function botsCallback()
+    public function botsCallback($updates)
     {
-        $updates = Telegram::getWebhookUpdates();
         $text = "<b>Выберите месенджер:</b>".PHP_EOL;
         $keyboard = array(
             array(
