@@ -35,7 +35,7 @@ class WebhookController extends Controller
             $data = $updates->callback_query->data;
             Log::info("data: ". $data);
 
-            $callbackName = ucfirst(substr($data, 1));
+            $callbackName = ucfirst($data);
             $callbackClass = 'App\\Telegram\\Commands\\'.$callbackName.'Command';
 
             Log::info("callbackClass: ". $callbackClass);
