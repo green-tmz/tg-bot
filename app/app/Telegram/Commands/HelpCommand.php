@@ -23,7 +23,6 @@ class HelpCommand extends Command
      * {@inheritdoc}
      */
     public function handle()
-
     {
         $text = "<b>Список доступных команд:</b>".PHP_EOL;
         $text .= "/help - Основные команды".PHP_EOL;

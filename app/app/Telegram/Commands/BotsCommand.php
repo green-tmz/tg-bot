@@ -24,7 +24,6 @@ class BotsCommand extends Command
      * {@inheritdoc}
      */
     public function handle()
-
     {
         $text = "<b>Список ботов:</b>".PHP_EOL;
 
