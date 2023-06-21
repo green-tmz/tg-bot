@@ -103,10 +103,10 @@ class MainController extends Controller
         $text = "<b>Выберите бота:</b>".PHP_EOL;
         $keyboard = array(
             array(
-               array('text'=>'Радио','callback_data'=>'radio'),
+               array('text'=>'Радио','url'=>'https://t.me/gs_radio_bot'),
             ),
             array(
-                array('text'=>'Онлайн запись','callback_data'=>'online'),
+                array('text'=>'Онлайн запись','url'=>'https://t.me/gs_online_bot'),
             ),
             array(
                 array('text'=>'Назад','callback_data'=>'bots'),
@@ -119,18 +119,6 @@ class MainController extends Controller
             'text' => $text,
             'parse_mode' => 'html',
             'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
-        ]);
-    }
-
-    public function radioCallback($updates)
-    {
-        Log::info(print_r(json_decode($updates) ,true));
-        $text = "https://t.me/gs_radio_bot";
-
-        Telegram::forwardMessage([
-            'chat_id' => '5936261673',
-            'from_chat_id' => '6026856394',
-            'message_id' => '1186',
         ]);
     }
 }
