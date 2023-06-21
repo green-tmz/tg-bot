@@ -124,7 +124,7 @@ class MainController extends Controller
 
     public function setName()
     {
-        print_r($this->sendTelegram('setMyName', 'Test'), true);
+        print_r($this->sendTelegram('setMyName', ['name' => 'TestBot']), true);
     }
 
     function sendTelegram($method, $response)
