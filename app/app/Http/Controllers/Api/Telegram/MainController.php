@@ -124,10 +124,11 @@ class MainController extends Controller
 
     public function setName($name)
     {
-        $this->sendTelegram(
+        $res = $this->sendTelegram(
             'setMyName',
             ['name' => $name]
         );
+        Log::info('Res: '.print_r(json_decode($res), true));
     }
 
     function sendTelegram($method, $response)
