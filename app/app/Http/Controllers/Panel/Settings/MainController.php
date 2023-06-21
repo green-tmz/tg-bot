@@ -28,10 +28,10 @@ class MainController extends Controller
 
         if ($request->name) {
             $newName = (new TelegramMainController)->setName($request->name);
-            if (!$newName['ok']) {
-                return back()
-                    ->with('error', $newName['description']);
-            }
+            // if (!$newName['ok']) {
+            //     return back()
+            //         ->with('error', $newName['description']);
+            // }
             $model->name = $request->name;
         }
 

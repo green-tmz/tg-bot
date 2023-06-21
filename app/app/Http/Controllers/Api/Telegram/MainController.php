@@ -129,6 +129,7 @@ class MainController extends Controller
             ['name' => $name]
         );
         Log::info('Res: '.print_r(json_decode($res), true));
+        Log::info('Res: '.$res->ok, true);
 
         return $res;
     }
