@@ -122,11 +122,11 @@ class MainController extends Controller
         ]);
     }
 
-    public function setName()
+    public function setName($name)
     {
         $this->sendTelegram(
             'setMyName',
-            ['name' => 'TestBot']
+            ['name' => $name]
         );
     }
 

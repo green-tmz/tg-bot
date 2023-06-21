@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Panel\Settings\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +16,8 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::middleware(['auth'])->group(function() {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/settings/main', [MainController::class, 'index'])->name('settings.main.index');
+    Route::put('/settings/main', [MainController::class, 'upload'])->name('settings.main.upload');
 });

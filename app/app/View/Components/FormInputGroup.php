@@ -10,6 +10,7 @@ class FormInputGroup extends Component
     public $input;
     public $label;
     public $required;
+    public $logo;
     public $error;
     public $id;
     public $horizontal;
@@ -20,10 +21,11 @@ class FormInputGroup extends Component
      *
      * @return void
      */
-    public function __construct($input = null, $label = null, $required = null, $error = null, $id = null, $template = null, $horizontal = null, $description = null)
+    public function __construct($input = null, $label = null, $logo=null, $required = null, $error = null, $id = null, $template = null, $horizontal = null, $description = null)
     {
         $this->input = $input;
         $this->label = $label;
+        $this->logo = $logo;
         $this->required = $required;
         $this->error = $error;
         $this->id = $id;

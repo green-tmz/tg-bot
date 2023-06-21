@@ -18,10 +18,10 @@
     <div class="menu-sub menu-sub-accordion">
         @php
             $submenuList = [
-                // [
-                //     'route' => 'type-fighters',
-                //     'label' => 'Типы бойцов',
-                // ],
+                [
+                    'route' => 'main',
+                    'label' => 'Основные настройки',
+                ],
             ];
 
             $submenuList = array_map(function (array $submenu) {
