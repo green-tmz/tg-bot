@@ -129,6 +129,8 @@ class MainController extends Controller
             ['name' => $name]
         );
         Log::info('Res: '.print_r(json_decode($res), true));
+
+        return $res;
     }
 
     function sendTelegram($method, $response)
