@@ -129,6 +129,7 @@ class MainController extends Controller
 
     function sendTelegram($method, $response)
     {
+        Log::info("Url: ".'https://api.telegram.org/bot'.env("TELEGRAM_BOT_TOKEN").'/'.$method);
         $ch = curl_init('https://api.telegram.org/bot'.env("TELEGRAM_BOT_TOKEN").'/'.$method);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $response);
@@ -137,6 +138,7 @@ class MainController extends Controller
         $res = curl_exec($ch);
         curl_close($ch);
 
+        Log::info('Res: '.$res);
         return $res;
     }
 }
