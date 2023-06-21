@@ -121,4 +121,11 @@ class MainController extends Controller
             'reply_markup' => json_encode(array('inline_keyboard' => $keyboard))
         ]);
     }
+
+    public function setName()
+    {
+        Telegram::setMyName([
+            'name' => 'Test',
+        ]);
+    }
 }

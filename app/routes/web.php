@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\Telegram\MainController;
+use App\Http\Controllers\Api\Telegram\WebhookController;
 use Illuminate\Support\Facades\Route;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
@@ -19,11 +21,9 @@ Route::get('/', function() {
 });
 
 Route::prefix('telegram')->group(function() {
-    Route::get('/setwebhook', function () {
-        return Telegram::setWebhook([
-            'url' => env("APP_URL").'/api/telegram/{env("TELEGRAM_BOT_TOKEN")}/webhook'
-        ]);
-    });
+    Route::get('/setwebhook', [WebhookController::class, 'setWebhook']);
+
+    Route::get('/setname', [MainController::class, 'setName']);
 });
 
 require __DIR__.'/auth.php';
