@@ -21,8 +21,11 @@ Route::get('/', function() {
 });
 
 Route::prefix('telegram')->group(function() {
-    Route::get('/setwebhook', [WebhookController::class, 'setWebhook']);
-
+    Route::get('menu', function() {
+        return json_encode([
+            'start - Основное меню'
+        ]);
+    });
 });
 
 require __DIR__.'/auth.php';
