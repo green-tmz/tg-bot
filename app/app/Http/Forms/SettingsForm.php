@@ -14,7 +14,7 @@ class SettingsForm extends SettingsRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3|max:10',
+            'name' => 'required|min:3|max:20',
             'token' => 'required|min:10',
             'desc' => 'max:255'
         ];
