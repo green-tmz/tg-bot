@@ -144,6 +144,31 @@ class MainController extends Controller
         return $res;
     }
 
+    public function getCommands()
+    {
+        $res = $this->sendTelegram(
+            'getMyCommands',
+            []
+        );
+
+        return $res;
+    }
+
+    public function setCommands()
+    {
+        $res = $this->sendTelegram(
+            'setMyCommands',
+            [
+                [
+                    'command' => 'test',
+                    'description' => 'Тест'
+                ]
+            ]
+        );
+
+        return $res;
+    }
+
     function sendTelegram($method, $response)
     {
         $ch = curl_init('https://api.telegram.org/bot'.env("TELEGRAM_BOT_TOKEN").'/'.$method);

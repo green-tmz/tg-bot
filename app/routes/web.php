@@ -21,11 +21,8 @@ Route::get('/', function() {
 });
 
 Route::prefix('telegram')->group(function() {
-    Route::get('menu', function() {
-        return json_encode([
-            'start - Основное меню'
-        ]);
-    });
+    Route::get('commands', [MainController::class, 'getCommands']);
+    Route::get('setcommands', [MainController::class, 'setCommands']);
 });
 
 require __DIR__.'/auth.php';
