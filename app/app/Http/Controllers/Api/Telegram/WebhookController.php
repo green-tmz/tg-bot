@@ -40,7 +40,7 @@ class WebhookController extends Controller
     public function setWebhook($token)
     {
         return Telegram::setWebhook([
-            'url' => env("APP_URL").'/api/telegram/'.$token.'}/webhook'
+            'url' => env("APP_URL").'/api/telegram/'.$token.'/webhook'
         ]);
     }
 }
