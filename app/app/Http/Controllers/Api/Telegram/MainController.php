@@ -133,6 +133,17 @@ class MainController extends Controller
         return $res;
     }
 
+    public function setDesc($description)
+    {
+        $res = $this->sendTelegram(
+            'setMyDescription',
+            ['description' => $description]
+        );
+        Log::info('Desc: '.print_r(json_decode($res), true));
+
+        return $res;
+    }
+
     function sendTelegram($method, $response)
     {
         $ch = curl_init('https://api.telegram.org/bot'.env("TELEGRAM_BOT_TOKEN").'/'.$method);

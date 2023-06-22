@@ -17,7 +17,7 @@ class Settings extends Model
         'id',
         'name',
         'token',
-        'logo'
+        'desc'
     ];
 
     public static function list() : array

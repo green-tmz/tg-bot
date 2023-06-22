@@ -14,9 +14,9 @@ class SettingsForm extends SettingsRequest
     public function rules(): array
     {
         return [
-            'name' => 'min:3',
+            'name' => 'required|min:3|max:10',
             'token' => 'required|min:10',
-            'logo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+            'desc' => 'max:255'
         ];
     }
 }

@@ -29,6 +29,7 @@ class MainController extends Controller
         $model = Settings::first();
         $model->name = $request->name;
         $model->token = $request->token;
+        $model->desc = $request->desc;
 
         if ($model->isDirty('name')) {
             $result = (new TelegramMainController)->setName($request->name);
@@ -49,11 +50,13 @@ class MainController extends Controller
             $save = true;
         }
 
-        if ($request->logo) {
-            $imageName = time().'.'.$request->logo->extension();
-            $request->logo->move(public_path('images'), $imageName);
-            $model->logo = $imageName;
-
+        if ($model->isDirty('desc')) {
+            $desc = (new TelegramMainController)->setDesc($request->desc);
+            if (!$desc) {
+                return back()
+                    ->with('error', 'Описание не сохранено');
+            }
+            $save = true;
         }
 
         if ($save) $model->save();

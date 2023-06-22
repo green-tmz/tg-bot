@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 use App\Http\Controllers\Api\Telegram\WebhookController;
-use App\Models\Settings;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('telegram')->group(function() {
-    $model = Settings::first();
-    Route::post('/'.$model->token.'/webhook', [WebhookController::class, 'index']);
+    if (Schema::hasTable('settings')) {
+        $model = Settings::first();
+        Route::post('/'.$model->token.'/webhook', [WebhookController::class, 'index']);
+    }
 });
 

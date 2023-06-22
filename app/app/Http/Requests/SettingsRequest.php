@@ -31,7 +31,7 @@ class SettingsRequest extends FormRequest
         return [
             'name' => 'Название',
             'token' => 'Токен',
-            'logo' => 'Логотип',
+            'desc' => 'Описание',
         ];
     }
 }
