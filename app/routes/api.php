@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('telegram')->group(function() {
-    Route::post('/{env("TELEGRAM_BOT_TOKEN")}/webhook', [WebhookController::class, 'index']);
+    Route::post('/'.env("TELEGRAM_BOT_TOKEN").'/webhook', [WebhookController::class, 'index']);
 });
 
