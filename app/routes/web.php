@@ -23,7 +23,6 @@ Route::get('/', function() {
 Route::prefix('telegram')->group(function() {
     Route::get('/setwebhook', [WebhookController::class, 'setWebhook']);
 
-    Route::get('/setname', [MainController::class, 'setName']);
 });
 
 require __DIR__.'/auth.php';
