@@ -156,14 +156,22 @@ class MainController extends Controller
 
     public function setCommands()
     {
+        $com = [[
+            "command" => "start",
+            "description" => "Основное меню"
+        ],
+        [
+            "command" => "help",
+            "description" => "Основные команды"
+        ],
+        [
+            "command" => "about",
+            "description" => "Описание бота"
+        ]];
+
         $res = $this->sendTelegram(
             'setMyCommands',
-            [
-                [
-                    'command' => 'test',
-                    'description' => 'Тест'
-                ]
-            ]
+            ['commands' => json_encode($com)]
         );
 
         return $res;
